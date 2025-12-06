@@ -36,23 +36,14 @@
       margin-left: 20px;
     }
 
-    .button-mail {
-      display: block;
-      margin: 20px auto;
-      padding: 10px 20px;
-      background-color: #2C6E91;
-      color: white;
-      border: none;
-      border-radius: 5px;
-      font-size: 16px;
-      cursor: pointer;
+    a {
+      color: #1a4a63;
       text-decoration: none;
-      text-align: center;
+      font-weight: bold;
     }
 
-    .contact-info {
-      text-align: center;
-      margin-top: 10px;
+    a:hover {
+      text-decoration: underline;
     }
   </style>
 </head>
@@ -61,12 +52,14 @@
 
   <h1>À propos de moi</h1>
 
-  <img class="photo" src="Photo_Andro-Boulos.jpg" alt="Mon avatar">
+  <!-- Photo / Avatar -->
+  <img class="photo" src="Photo_Andro-Boulos.jpg" alt="Photo de moi">
 
   <h2 class="section-title">Qui suis-je ?</h2>
   <p>
     Bonjour ! Je m'appelle <strong>Andro</strong>.  
-    Je suis en reconversion professionnelle après un master en économie et une expérience dans une association environnementale. Aujourd’hui, j’apprends le développement web pour me réorienter vers un métier plus créatif et mieux rémunéré.
+    Je suis en reconversion professionnelle après un master en économie et une expérience dans une association environnementale.  
+    Aujourd’hui, j’apprends le développement web pour me réorienter vers un métier plus créatif et mieux rémunéré.
   </p>
 
   <h2 class="section-title">Ce que j'aime</h2>
@@ -82,12 +75,16 @@
     Devenir développeur web junior, créer des projets utiles et travailler dans un domaine qui a du sens pour moi.
   </p>
 
-  <!-- Bouton mail -->
-  <a href="mailto:andro.michel95@gmail.com" class="button-mail">Me contacter</a>
+  <h2 class="section-title">Contact</h2>
 
-  <!-- Numéro de téléphone -->
-  <p class="contact-info">
-    Ou téléphonez-moi au : <a href="tel:+33768982511">+33 7 68 98 25 11</a>
+  <p style="text-align: center; margin-top: 10px; font-size: 18px;">
+    📧 Email :  
+    <a href="mailto:andro.michel95@gmail.com">andro.michel95@gmail.com</a>
+  </p>
+
+  <p style="text-align: center; margin-top: 10px; font-size: 18px;">
+    📞 Téléphone :  
+    <a href="tel:+33768982511">+33 7 68 98 25 11</a>
   </p>
 
 </body>
