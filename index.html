@@ -3,19 +3,23 @@
 <head>
   <meta charset="UTF-8">
   <title>À propos de moi</title>
+  
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+
   <style>
     body {
-      font-family: Arial, sans-serif;
-      max-width: 800px;
+      font-family: 'Roboto', Arial, sans-serif;
+      max-width: 900px;
       margin: auto;
       padding: 20px;
       line-height: 1.6;
       background-color: #f4f7f9;
+      color: #333;
     }
 
-    h1 {
+    h1, h2 {
       color: #2C6E91;
-      text-align: center;
     }
 
     .photo {
@@ -25,10 +29,32 @@
       margin: 20px auto;
     }
 
+    nav {
+      background-color: #2C6E91;
+      padding: 15px;
+      text-align: center;
+      border-radius: 8px;
+      margin-bottom: 30px;
+    }
+
+    nav a {
+      color: white;
+      margin: 0 15px;
+      font-weight: bold;
+      text-decoration: none;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+    }
+
+    section {
+      padding: 40px 0;
+    }
+
     .section-title {
-      color: #1a4a63;
-      margin-top: 30px;
-      font-size: 22px;
+      font-size: 24px;
+      margin-bottom: 20px;
     }
 
     ul {
@@ -36,66 +62,73 @@
       margin-left: 20px;
     }
 
-    a {
-      color: #1a4a63;
+    a.button {
+      display: inline-block;
+      padding: 10px 20px;
+      background-color: #2C6E91;
+      color: white;
+      border-radius: 6px;
       text-decoration: none;
       font-weight: bold;
+      transition: background 0.3s;
     }
 
-    a:hover {
-      text-decoration: underline;
+    a.button:hover {
+      background-color: #1a4a63;
+    }
+
+    p.contact-info {
+      text-align: center;
+      font-size: 18px;
+      margin-top: 10px;
     }
   </style>
 </head>
 
 <body>
-<nav style="
-  background-color: #2C6E91;
-  padding: 15px;
-  text-align: center;
-  border-radius: 8px;
-  margin-bottom: 20px;
-">
-  <a href="index.html" style="color: white; margin: 0 15px; font-weight: bold; text-decoration: none;">Accueil</a>
-  <a href="portfolio.html" style="color: white; margin: 0 15px; font-weight: bold; text-decoration: none;">Portfolio</a>
-  <a href="#contact" style="color: white; margin: 0 15px; font-weight: bold; text-decoration: none;">Contact</a>
-</nav>
+
+  <!-- Barre de navigation -->
+  <nav>
+    <a href="index.html">Accueil</a>
+    <a href="portfolio.html">Portfolio</a>
+    <a href="#contact">Contact</a>
+  </nav>
+
   <h1>À propos de moi</h1>
 
-  <!-- Photo / Avatar -->
+  <!-- Avatar -->
   <img class="photo" src="Photo_Andro-Boulos.jpg" alt="Photo de moi">
 
-  <h2 class="section-title">Qui suis-je ?</h2>
-  <p>
-    Bonjour ! Je m'appelle <strong>Andro</strong>.  
-    Je suis en reconversion professionnelle après un master en économie et une expérience dans une association environnementale.  
-    Aujourd’hui, j’apprends le développement web pour me réorienter vers un métier plus créatif et mieux rémunéré.
-  </p>
+  <section>
+    <h2 class="section-title">Qui suis-je ?</h2>
+    <p>
+      Bonjour ! Je m'appelle <strong>Andro</strong>.  
+      Je suis en reconversion professionnelle après un master en économie et une expérience dans une association environnementale.  
+      Aujourd’hui, j’apprends le développement web pour me réorienter vers un métier plus créatif et mieux rémunéré.
+    </p>
+  </section>
 
-  <h2 class="section-title">Ce que j'aime</h2>
-  <ul>
-    <li>La nature</li>
-    <li>Le football</li>
-    <li>Les voyages</li>
-    <li>Apprendre de nouvelles choses</li>
-  </ul>
+  <section>
+    <h2 class="section-title">Ce que j'aime</h2>
+    <ul>
+      <li>La nature</li>
+      <li>Le football</li>
+      <li>Les voyages</li>
+      <li>Apprendre de nouvelles choses</li>
+    </ul>
+  </section>
 
-  <h2 class="section-title">Mes objectifs</h2>
-  <p>
-    Devenir développeur web junior, créer des projets utiles et travailler dans un domaine qui a du sens pour moi.
-  </p>
+  <section>
+    <h2 class="section-title">Mes objectifs</h2>
+    <p>
+      Devenir développeur web junior, créer des projets utiles et travailler dans un domaine qui a du sens pour moi.
+    </p>
+  </section>
 
-  <h2 class="section-title">Contact</h2>
-
-  <p style="text-align: center; margin-top: 10px; font-size: 18px;">
-    📧 Email :  
-    <a href="mailto:andro.michel95@gmail.com">andro.michel95@gmail.com</a>
-  </p>
-
-  <p style="text-align: center; margin-top: 10px; font-size: 18px;">
-    📞 Téléphone :  
-    <a href="tel:+33768982511">+33 7 68 98 25 11</a>
-  </p>
+  <section id="contact">
+    <p class="contact-info">📧 Email : <a href="mailto:andro.michel95@gmail.com" class="button">andro.michel95@gmail.com</a></p>
+    <p class="contact-info">📞 Téléphone : <a href="tel:+33768982511" class="button">+33 7 68 98 25 11</a></p>
+  </section>
 
 </body>
 </html>
