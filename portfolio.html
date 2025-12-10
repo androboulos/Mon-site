@@ -68,6 +68,43 @@
     a:hover {
       text-decoration: underline;
     }
+
+    .calculator {
+      background: white;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+      display: grid;
+      grid-template-columns: repeat(4, 60px);
+      grid-gap: 10px;
+      justify-content: center;
+      margin-top: 20px;
+    }
+
+    .calculator input {
+      grid-column: span 4;
+      padding: 10px;
+      font-size: 20px;
+      text-align: right;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+    }
+
+    button {
+      padding: 15px;
+      font-size: 18px;
+      border-radius: 6px;
+      border: none;
+      background-color: #2C6E91;
+      color: white;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    button:hover {
+      background-color: #1a4a63;
+    }
+
   </style>
 </head>
 
@@ -107,15 +144,87 @@
     </p>
   </div>
 
+  <!-- Projet 4 : Calculatrice Interactive -->
   <div class="project">
-  <h2>Projet 4 : Calculatrice Interactive</h2>
-  <p>
-    Une calculatrice simple mais interactive en JavaScript.  
-    Testez-la directement dans votre navigateur !
-  </p>
-  <a href="calculatrice.html">Voir le projet</a>
-</div>
+    <h2>Projet 4 : Calculatrice Interactive</h2>
+    <p>
+      Une calculatrice simple et interactive en JavaScript. Testez-la directement ci-dessous !
+    </p>
 
+    <div class="calculator">
+      <input type="text" id="display" disabled placeholder="0">
+      <button onclick="appendNumber('7')">7</button>
+      <button onclick="appendNumber('8')">8</button>
+      <button onclick="appendNumber('9')">9</button>
+      <button onclick="setOperation('/')">÷</button>
+      <button onclick="appendNumber('4')">4</button>
+      <button onclick="appendNumber('5')">5</button>
+      <button onclick="appendNumber('6')">6</button>
+      <button onclick="setOperation('*')">×</button>
+      <button onclick="appendNumber('1')">1</button>
+      <button onclick="appendNumber('2')">2</button>
+      <button onclick="appendNumber('3')">3</button>
+      <button onclick="setOperation('-')">-</button>
+      <button onclick="appendNumber('0')">0</button>
+      <button onclick="appendNumber('.')">.</button>
+      <button onclick="calculate()">=</button>
+      <button onclick="setOperation('+')">+</button>
+      <button onclick="clearDisplay()" style="grid-column: span 4; background-color:#e74c3c;">C</button>
+    </div>
+
+  </div>
+
+  <script>
+    let currentOperation = null;
+    let firstNumber = '';
+    let secondNumber = '';
+    let isSecond = false;
+
+    const display = document.getElementById('display');
+
+    function appendNumber(num) {
+      if (!isSecond) {
+        firstNumber += num;
+        display.value = firstNumber;
+      } else {
+        secondNumber += num;
+        display.value = secondNumber;
+      }
+    }
+
+    function setOperation(op) {
+      if (firstNumber === '') return;
+      currentOperation = op;
+      isSecond = true;
+      display.value = '';
+    }
+
+    function calculate() {
+      if (!firstNumber || !secondNumber || !currentOperation) return;
+      let result;
+      const a = parseFloat(firstNumber);
+      const b = parseFloat(secondNumber);
+      switch(currentOperation) {
+        case '+': result = a + b; break;
+        case '-': result = a - b; break;
+        case '*': result = a * b; break;
+        case '/': result = a / b; break;
+      }
+      display.value = result;
+      firstNumber = result.toString();
+      secondNumber = '';
+      isSecond = false;
+      currentOperation = null;
+    }
+
+    function clearDisplay() {
+      firstNumber = '';
+      secondNumber = '';
+      isSecond = false;
+      currentOperation = null;
+      display.value = '';
+    }
+  </script>
 
 </body>
 </html>
