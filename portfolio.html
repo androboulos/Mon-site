@@ -3,28 +3,56 @@
 <head>
   <meta charset="UTF-8">
   <title>Mon portfolio</title>
+  
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 
   <style>
     body {
-      font-family: Arial, sans-serif;
+      font-family: 'Roboto', Arial, sans-serif;
       max-width: 900px;
       margin: auto;
       padding: 20px;
       line-height: 1.6;
       background-color: #f4f7f9;
+      color: #333;
     }
 
-    h1 {
-      text-align: center;
+    h1, h2 {
       color: #2C6E91;
+    }
+
+    nav {
+      background-color: #2C6E91;
+      padding: 15px;
+      text-align: center;
+      border-radius: 8px;
+      margin-bottom: 30px;
+    }
+
+    nav a {
+      color: white;
+      margin: 0 15px;
+      font-weight: bold;
+      text-decoration: none;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
     }
 
     .project {
       background: white;
       padding: 20px;
-      border-radius: 10px;
+      border-radius: 12px;
       margin-bottom: 20px;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .project:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.2);
     }
 
     .project h2 {
@@ -45,17 +73,11 @@
 
 <body>
 
-  <!-- Barre de navigation identique -->
-  <nav style="
-    background-color: #2C6E91;
-    padding: 15px;
-    text-align: center;
-    border-radius: 8px;
-    margin-bottom: 20px;
-  ">
-    <a href="index.html" style="color: white; margin: 0 15px; font-weight: bold; text-decoration: none;">Accueil</a>
-    <a href="portfolio.html" style="color: white; margin: 0 15px; font-weight: bold; text-decoration: none;">Portfolio</a>
-    <a href="#contact" style="color: white; margin: 0 15px; font-weight: bold; text-decoration: none;">Contact</a>
+  <!-- Barre de navigation -->
+  <nav>
+    <a href="index.html">Accueil</a>
+    <a href="portfolio.html">Portfolio</a>
+    <a href="#contact">Contact</a>
   </nav>
 
   <h1>Mes projets</h1>
@@ -69,17 +91,17 @@
     <a href="index.html">Voir le projet</a>
   </div>
 
-  <!-- Projet 2 (vide pour le moment) -->
+  <!-- Projet 2 -->
   <div class="project">
-    <h2>Projet 2 : (à venir)</h2>
+    <h2>Projet 2 : À venir</h2>
     <p>
       Bientôt : une application JavaScript simple (calculatrice, météo, mini-jeu…)
     </p>
   </div>
 
-  <!-- Projet 3 (vide pour le moment) -->
+  <!-- Projet 3 -->
   <div class="project">
-    <h2>Projet 3 : (à venir)</h2>
+    <h2>Projet 3 : À venir</h2>
     <p>
       Après : votre premier projet React !
     </p>
