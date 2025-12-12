@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Convertisseur Euro → Dollar</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f7f9;
+      padding: 20px;
+      max-width: 500px;
+      margin: auto;
+      text-align: center;
+    }
+
+    h1 {
+      color: #2C6E91;
+    }
+
+    .box {
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      margin-top: 20px;
+    }
+
+    input {
+      padding: 10px;
+      width: 80%;
+      font-size: 18px;
+      margin-top: 10px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      text-align: center;
+    }
+
+    button {
+      padding: 10px 20px;
+      margin-top: 15px;
+      background-color: #2C6E91;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 18px;
+    }
+
+    button:hover {
+      background-color: #1a4a63;
+    }
+
+    #resultat {
+      margin-top: 20px;
+      font-size: 22px;
+      font-weight: bold;
+      color: #2C6E91;
+    }
+  </style>
+</head>
+
+<body>
+
+  <h1>Convertisseur € → $</h1>
+
+  <div class="box">
+    <p>Entrez un montant en euros :</p>
+    <input type="number" id="euros" placeholder="Ex : 50">
+    <button onclick="convertir()">Convertir</button>
+
+    <div id="resultat"></div>
+  </div>
+
+  <script>
+    function convertir() {
+      let euros = document.getElementById("euros").value;
+      if (euros === "") {
+        alert("Merci d’entrer un montant !");
+        return;
+      }
+
+      let taux = 1.08; // taux fixe simple
+      let dollars = euros * taux;
+
+      document.getElementById("resultat").textContent =
+        euros + " € = " + dollars.toFixed(2) + " $";
+    }
+  </script>
+
+</body>
+</html>
