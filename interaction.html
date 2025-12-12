@@ -3,6 +3,32 @@
 <head>
   <meta charset="UTF-8">
   <title>Script Interactif</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #f4f7f9;
+      color: #333;
+      max-width: 800px;
+      margin: auto;
+      padding: 20px;
+      line-height: 1.6;
+    }
+
+    h1 {
+      color: #2C6E91;
+      text-align: center;
+    }
+
+    p {
+      font-size: 18px;
+      color: #2C6E91;
+    }
+
+    .highlight {
+      color: #e67e22; /* couleur orange pour les messages */
+      font-weight: bold;
+    }
+  </style>
 </head>
 <body>
 
@@ -13,12 +39,10 @@
     let ageUser = prompt("Quel âge as-tu ?");
     let aimeCoderUser = prompt("Aimes-tu coder ? (oui/non)");
 
-    // Affiche prénom et âge
-    document.body.innerHTML += `<p>Bonjour ${prenomUser} ! Tu as ${ageUser} ans.</p>`;
+    document.body.innerHTML += `<p>Bonjour <span class="highlight">${prenomUser}</span> ! Tu as ${ageUser} ans.</p>`;
 
-    // Affiche seulement "J'aime coder" si l'utilisateur a répondu oui
     if (aimeCoderUser.toLowerCase() === "oui") {
-      document.body.innerHTML += `<p>J'aime coder !</p>`;
+      document.body.innerHTML += `<p class="highlight">J'aime coder !</p>`;
     }
   </script>
 
