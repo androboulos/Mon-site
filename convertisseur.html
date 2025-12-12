@@ -2,7 +2,7 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <title>Convertisseur Euro → Dollar</title>
+  <title>Convertisseur de devises</title>
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -25,25 +25,22 @@
       margin-top: 20px;
     }
 
-    input {
+    input, select {
       padding: 10px;
-      width: 80%;
-      font-size: 18px;
-      margin-top: 10px;
+      font-size: 16px;
+      margin: 10px 0;
       border-radius: 5px;
       border: 1px solid #ccc;
-      text-align: center;
     }
 
     button {
       padding: 10px 20px;
-      margin-top: 15px;
       background-color: #2C6E91;
       color: white;
       border: none;
       border-radius: 5px;
       cursor: pointer;
-      font-size: 18px;
+      font-size: 16px;
     }
 
     button:hover {
@@ -52,38 +49,61 @@
 
     #resultat {
       margin-top: 20px;
-      font-size: 22px;
+      font-size: 20px;
       font-weight: bold;
       color: #2C6E91;
     }
   </style>
 </head>
-
 <body>
 
-  <h1>Convertisseur € → $</h1>
+  <h1>Convertisseur de devises</h1>
 
   <div class="box">
-    <p>Entrez un montant en euros :</p>
-    <input type="number" id="euros" placeholder="Ex : 50">
+    <p>Montant :</p>
+    <input type="number" id="montant" placeholder="Ex : 50">
+
+    <p>De :</p>
+    <select id="from">
+      <option value="EUR">Euro (€)</option>
+      <option value="USD">Dollar ($)</option>
+      <option value="EGP">Livre égyptienne (EGP)</option>
+    </select>
+
+    <p>Vers :</p>
+    <select id="to">
+      <option value="EUR">Euro (€)</option>
+      <option value="USD">Dollar ($)</option>
+      <option value="EGP">Livre égyptienne (EGP)</option>
+    </select>
+
+    <br>
     <button onclick="convertir()">Convertir</button>
 
     <div id="resultat"></div>
   </div>
 
   <script>
+    // taux fixes
+  const taux = {
+  "EUR": { "USD": 1.08, "EGP": 55, "EUR": 1 },
+  "USD": { "EUR": 0.93, "EGP": 29.8, "USD": 1 },
+  "EGP": { "EUR": 0.018, "USD": 0.034, "EGP": 1 }
+   };
+
     function convertir() {
-      let euros = document.getElementById("euros").value;
-      if (euros === "") {
-        alert("Merci d’entrer un montant !");
+      let montant = parseFloat(document.getElementById("montant").value);
+      let from = document.getElementById("from").value;
+      let to = document.getElementById("to").value;
+
+      if (isNaN(montant)) {
+        alert("Merci d’entrer un montant valide !");
         return;
       }
 
-      let taux = 1.08; // taux fixe simple
-      let dollars = euros * taux;
-
-      document.getElementById("resultat").textContent =
-        euros + " € = " + dollars.toFixed(2) + " $";
+      let resultat = montant * taux[from][to];
+      document.getElementById("resultat").textContent = 
+        montant + " " + from + " = " + resultat.toFixed(2) + " " + to;
     }
   </script>
 
