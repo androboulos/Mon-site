@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Quiz Interactif</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f7f9;
+      padding: 20px;
+      max-width: 600px;
+      margin: auto;
+    }
+
+    h1 {
+      text-align: center;
+      color: #2C6E91;
+    }
+
+    .question {
+      background: white;
+      padding: 20px;
+      margin-bottom: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+
+    button {
+      background-color: #2C6E91;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      margin-top: 10px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    button:hover {
+      background-color: #1a4a63;
+    }
+
+    #resultat {
+      text-align: center;
+      font-size: 20px;
+      font-weight: bold;
+      margin-top: 20px;
+      color: #2C6E91;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Quiz : Teste tes connaissances !</h1>
+
+  <div class="question">
+    <p><strong>1. Quelle est la capitale de la France ?</strong></p>
+    <input type="radio" name="q1" value="0"> Marseille<br>
+    <input type="radio" name="q1" value="1"> Paris<br>
+    <input type="radio" name="q1" value="0"> Lyon<br>
+  </div>
+
+  <div class="question">
+    <p><strong>2. Combien fait 5 + 7 ?</strong></p>
+    <input type="radio" name="q2" value="0"> 10<br>
+    <input type="radio" name="q2" value="1"> 12<br>
+    <input type="radio" name="q2" value="0"> 14<br>
+  </div>
+
+  <div class="question">
+    <p><strong>3. Le HTML sert à…</strong></p>
+    <input type="radio" name="q3" value="1"> Structurer une page web<br>
+    <input type="radio" name="q3" value="0"> Dresser des chevaux<br>
+    <input type="radio" name="q3" value="0"> Installer Windows<br>
+  </div>
+
+  <button onclick="corriger()">Valider mes réponses</button>
+
+  <div id="resultat"></div>
+
+  <script>
+    function corriger() {
+      let score = 0;
+
+      let q1 = document.querySelector('input[name="q1"]:checked');
+      let q2 = document.querySelector('input[name="q2"]:checked');
+      let q3 = document.querySelector('input[name="q3"]:checked');
+
+      if (q1) score += parseInt(q1.value);
+      if (q2) score += parseInt(q2.value);
+      if (q3) score += parseInt(q3.value);
+
+      document.getElementById("resultat").textContent =
+        "Tu as obtenu : " + score + "/3 🎉";
+    }
+  </script>
+
+</body>
+</html>
