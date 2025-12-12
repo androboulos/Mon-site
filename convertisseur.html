@@ -2,49 +2,45 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <title>Convertisseur € → $ et EGP</title>
+  <title>Convertisseur de devises</title>
   <style>
     body {
-      font-family: 'Roboto', Arial, sans-serif;
-      background-color: #f4f7f9;
+      font-family: Arial, sans-serif;
+      background: #f4f7f9;
+      padding: 20px;
       max-width: 500px;
       margin: auto;
-      padding: 20px;
       text-align: center;
     }
 
     h1 {
       color: #2C6E91;
-      margin-bottom: 20px;
     }
 
     .box {
       background: white;
-      padding: 25px;
-      border-radius: 12px;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.15);
-      margin-bottom: 30px;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      margin-top: 20px;
     }
 
-    input {
+    input, select {
       padding: 10px;
-      font-size: 18px;
-      width: 80%;
-      border-radius: 6px;
+      font-size: 16px;
+      margin: 10px 0;
+      border-radius: 5px;
       border: 1px solid #ccc;
-      text-align: center;
     }
 
     button {
-      padding: 12px 25px;
+      padding: 10px 20px;
       background-color: #2C6E91;
       color: white;
       border: none;
-      border-radius: 8px;
+      border-radius: 5px;
       cursor: pointer;
       font-size: 16px;
-      margin-top: 10px;
-      transition: background 0.3s;
     }
 
     button:hover {
@@ -64,29 +60,50 @@
   <h1>Convertisseur de devises</h1>
 
   <div class="box">
-    <input type="number" id="euros" placeholder="Montant en €">
+    <p>Montant :</p>
+    <input type="number" id="montant" placeholder="Ex : 50">
+
+    <p>De :</p>
+    <select id="from">
+      <option value="EUR">Euro (€)</option>
+      <option value="USD">Dollar ($)</option>
+      <option value="EGP">Livre égyptienne (EGP)</option>
+    </select>
+
+    <p>Vers :</p>
+    <select id="to">
+      <option value="EUR">Euro (€)</option>
+      <option value="USD">Dollar ($)</option>
+      <option value="EGP">Livre égyptienne (EGP)</option>
+    </select>
+
     <br>
     <button onclick="convertir()">Convertir</button>
+
     <div id="resultat"></div>
   </div>
 
   <script>
+    // taux fixes avec Euro → EGP = 55
+    const taux = {
+      "EUR": { "USD": 1.08, "EGP": 55, "EUR": 1 },
+      "USD": { "EUR": 0.93, "EGP": 50.9, "USD": 1 },
+      "EGP": { "EUR": 0.018, "USD": 0.019, "EGP": 1 }
+    };
+
     function convertir() {
-      let euros = parseFloat(document.getElementById("euros").value);
-      if (isNaN(euros)) {
-        alert("Merci d’entrer un montant !");
+      let montant = parseFloat(document.getElementById("montant").value);
+      let from = document.getElementById("from").value;
+      let to = document.getElementById("to").value;
+
+      if (isNaN(montant)) {
+        alert("Merci d’entrer un montant valide !");
         return;
       }
 
-      let tauxDollar = 1.08; // 1€ = 1,08$
-      let tauxEGP = 55;      // 1€ = 55 EGP
-
-      let resultatDollar = euros * tauxDollar;
-      let resultatEGP = euros * tauxEGP;
-
-      document.getElementById("resultat").innerHTML =
-        euros + " € = " + resultatDollar.toFixed(2) + " $<br>" +
-        euros + " € = " + resultatEGP.toFixed(2) + " EGP";
+      let resultat = montant * taux[from][to];
+      document.getElementById("resultat").textContent = 
+        montant + " " + from + " = " + resultat.toFixed(2) + " " + to;
     }
   </script>
 
