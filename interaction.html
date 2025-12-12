@@ -13,9 +13,13 @@
     let ageUser = prompt("Quel âge as-tu ?");
     let aimeCoderUser = prompt("Aimes-tu coder ? (oui/non)");
 
+    // Affiche prénom et âge
     document.body.innerHTML += `<p>Bonjour ${prenomUser} ! Tu as ${ageUser} ans.</p>`;
-    document.body.innerHTML += `<p>Aimes-tu coder ? ${aimeCoderUser}</p>`;
 
+    // Affiche seulement "J'aime coder" si l'utilisateur a répondu oui
+    if (aimeCoderUser.toLowerCase() === "oui") {
+      document.body.innerHTML += `<p>J'aime coder !</p>`;
+    }
   </script>
 
 </body>
