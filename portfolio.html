@@ -55,39 +55,24 @@
       box-shadow: 0 8px 20px rgba(0,0,0,0.2);
     }
 
-    .project h2 {
+    .project h2, .project h3 {
       margin-top: 0;
     }
 
-    a {
-      color: #2C6E91;
-      font-weight: bold;
+    .project a {
+      display: block;
+      margin-top: 10px;
       text-decoration: none;
+      font-weight: bold;
+      color: #2C6E91;
+      border-bottom: 2px solid #2C6E91;
+      width: fit-content;
+      transition: color 0.3s, border-color 0.3s;
     }
 
-    a:hover {
-      text-decoration: underline;
-    }
-
-    .calculator {
-      background: white;
-      padding: 20px;
-      border-radius: 12px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.15);
-      display: grid;
-      grid-template-columns: repeat(4, 60px);
-      grid-gap: 10px;
-      justify-content: center;
-      margin-top: 20px;
-    }
-
-    .calculator input {
-      grid-column: span 4;
-      padding: 10px;
-      font-size: 20px;
-      text-align: right;
-      border-radius: 6px;
-      border: 1px solid #ccc;
+    .project a:hover {
+      color: #1a4a63;
+      border-color: #1a4a63;
     }
 
     button {
@@ -128,12 +113,13 @@
     <a href="index.html">Voir le projet</a>
   </div>
 
-  <!-- Projet 2 -->
+  <!-- Projet 2 : Script interactif JS -->
   <div class="project">
-    <h2>Projet 2 : À venir</h2>
+    <h2>Projet 2 : Script interactif JavaScript</h2>
     <p>
-      Bientôt : une application JavaScript simple (calculatrice, météo, mini-jeu…)
+      Un script interactif qui pose des questions à l’utilisateur et affiche les réponses directement sur la page.
     </p>
+    <a href="https://androboulos.github.io/Mon-site/interaction.html" target="_blank">Voir le projet</a>
   </div>
 
   <!-- Projet 3 -->
@@ -142,28 +128,23 @@
     <p>
       Après : votre premier projet React !
     </p>
+    <a href="#">Voir le projet</a>
   </div>
 
+  <!-- Projet 4 : Calculatrice -->
   <div class="project">
-  <h2>Projet 4 : Calculatrice Interactive</h2>
-  <p>
-    Une calculatrice simple et interactive en JavaScript. 
-  </p>
-  <a href="calculatrice.html">Voir le projet</a>
+    <h2>Projet 4 : Calculatrice Interactive</h2>
+    <p>
+      Une calculatrice simple et interactive en JavaScript.
+    </p>
+    <a href="calculatrice.html">Voir le projet</a>
   </div>
 
-  <div class="projet">
-  <h3>Projet 2 : Script interactif JavaScript</h3>
-  <a href="https://androboulos.github.io/Mon-site/interaction.html" target="_blank" 
-     style="display:inline-block; padding:10px 20px; background-color:#2C6E91; color:white; text-decoration:none; border-radius:5px; font-weight:bold; text-align:center; margin:10px 0;">
-    Voir mon projet interactif
-  </a>
-</div>
-
+  <!-- Bouton WordPress -->
   <a href="https://andromichel95-xykhl.wordpress.com/" target="_blank" 
-   style="display:inline-block; padding:10px 20px; background-color:#2C6E91; color:white; text-decoration:none; border-radius:5px;">
-  Mon site WordPress
-</a>
+     style="display:inline-block; padding:10px 20px; background-color:#2C6E91; color:white; text-decoration:none; border-radius:5px; font-weight:bold; margin-top:20px;">
+    Mon site WordPress
+  </a>
 
 </body>
 </html>
