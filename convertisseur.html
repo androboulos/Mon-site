@@ -5,42 +5,47 @@
   <title>Convertisseur de devises</title>
   <style>
     body {
-      font-family: Arial, sans-serif;
-      background: #f4f7f9;
-      padding: 20px;
-      max-width: 500px;
+      font-family: 'Roboto', Arial, sans-serif;
+      background-color: #f4f7f9;
+      max-width: 600px;
       margin: auto;
+      padding: 20px;
       text-align: center;
     }
 
     h1 {
       color: #2C6E91;
+      margin-bottom: 20px;
     }
 
     .box {
       background: white;
-      padding: 20px;
-      border-radius: 10px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-      margin-top: 20px;
+      padding: 25px;
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+      margin-bottom: 30px;
     }
 
     input, select {
       padding: 10px;
       font-size: 16px;
       margin: 10px 0;
-      border-radius: 5px;
+      border-radius: 6px;
       border: 1px solid #ccc;
+      width: 80%;
+      text-align: center;
     }
 
     button {
-      padding: 10px 20px;
+      padding: 12px 25px;
       background-color: #2C6E91;
       color: white;
       border: none;
-      border-radius: 5px;
+      border-radius: 8px;
       cursor: pointer;
       font-size: 16px;
+      margin-top: 10px;
+      transition: background 0.3s;
     }
 
     button:hover {
@@ -60,23 +65,19 @@
   <h1>Convertisseur de devises</h1>
 
   <div class="box">
-    <p>Montant :</p>
-    <input type="number" id="montant" placeholder="Ex : 50">
-
-    <p>De :</p>
+    <input type="number" id="montant" placeholder="Entrez un montant">
+    <br>
     <select id="from">
       <option value="EUR">Euro (€)</option>
       <option value="USD">Dollar ($)</option>
       <option value="EGP">Livre égyptienne (EGP)</option>
     </select>
-
-    <p>Vers :</p>
+    <br>
     <select id="to">
       <option value="EUR">Euro (€)</option>
       <option value="USD">Dollar ($)</option>
       <option value="EGP">Livre égyptienne (EGP)</option>
     </select>
-
     <br>
     <button onclick="convertir()">Convertir</button>
 
@@ -84,12 +85,12 @@
   </div>
 
   <script>
-    // taux fixes
-  const taux = {
-  "EUR": { "USD": 1.08, "EGP": 55, "EUR": 1 },
-  "USD": { "EUR": 0.93, "EGP": 29.8, "USD": 1 },
-  "EGP": { "EUR": 0.018, "USD": 0.034, "EGP": 1 }
-   };
+    // Taux fixes
+    const taux = {
+      "EUR": { "USD": 1.08, "EGP": 55, "EUR": 1 },
+      "USD": { "EUR": 0.93, "EGP": 50.9, "USD": 1 },
+      "EGP": { "EUR": 0.018, "USD": 0.019, "EGP": 1 }
+    };
 
     function convertir() {
       let montant = parseFloat(document.getElementById("montant").value);
