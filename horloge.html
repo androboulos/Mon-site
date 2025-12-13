@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Horloge digitale</title>
+  <style>
+    body {
+      font-family: 'Roboto', Arial, sans-serif;
+      background-color: #fff9c4; /* arrière-plan jaune clair */
+      max-width: 600px;
+      margin: auto;
+      padding: 20px;
+      text-align: center;
+    }
+
+    h1 {
+      color: #2C6E91;
+      margin-bottom: 20px;
+    }
+
+    .box {
+      background: white;
+      padding: 25px;
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+      margin-bottom: 30px;
+    }
+
+    #horloge {
+      font-size: 36px;
+      font-weight: bold;
+      color: #2C6E91;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Horloge digitale en temps réel</h1>
+
+  <div class="box">
+    <div id="horloge"></div>
+  </div>
+
+  <script>
+    function mettreAJourHorloge() {
+      const maintenant = new Date();
+      let h = maintenant.getHours().toString().padStart(2,'0');
+      let m = maintenant.getMinutes().toString().padStart(2,'0');
+      let s = maintenant.getSeconds().toString().padStart(2,'0');
+      document.getElementById("horloge").textContent = `${h}:${m}:${s}`;
+    }
+
+    setInterval(mettreAJourHorloge, 1000);
+    mettreAJourHorloge(); // affichage immédiat au chargement
+  </script>
+
+</body>
+</html>
