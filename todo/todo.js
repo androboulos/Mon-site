@@ -6,11 +6,7 @@ const filterButtons = document.querySelectorAll(".filters button");
 
 // Ajouter tâche
 addTaskBtn.addEventListener("click", addTask);
-
-// Ajouter avec ENTER
-taskInput.addEventListener("keypress", (e) => {
-  if (e.key === "Enter") addTask();
-});
+taskInput.addEventListener("keypress", (e) => { if (e.key === "Enter") addTask(); });
 
 // Filtres
 filterButtons.forEach(btn => {
@@ -19,9 +15,10 @@ filterButtons.forEach(btn => {
   });
 });
 
+// Ajouter une tâche
 function addTask() {
   const text = taskInput.value.trim();
-  if (text === "") return alert("Entrez une tâche");
+  if (!text) return alert("Entrez une tâche");
 
   const li = document.createElement("li");
   li.textContent = text;
@@ -54,7 +51,6 @@ function updateCounter() {
   const total = taskList.children.length;
   const done = document.querySelectorAll("li.done").length;
   const remaining = total - done;
-
   counter.textContent = `Tâches : ${remaining} à faire / ${total} au total`;
 }
 
@@ -68,33 +64,8 @@ function loadTasks() {
   const saved = localStorage.getItem("tasks");
   if (saved) {
     taskList.innerHTML = saved;
-    updateCounter();
-  }
-}
 
-// Filtres
-function filterTasks(filter) {
-  const tasks = document.querySelectorAll("li");
-
-  tasks.forEach(task => {
-    if (filter === "all") {
-      task.style.display = "flex";
-    } else if (filter === "done") {
-      task.style.display = task.classList.contains("done") ? "flex" : "none";
-    } else if (filter === "todo") {
-      task.style.display = !task.classList.contains("done") ? "flex" : "none";
-    }
-  });
-}
-
-function loadTasks() {
-  const saved = localStorage.getItem("tasks");
-  if (saved) {
-    taskList.innerHTML = saved;
-
-    // Réactiver les événements sur les tâches sauvegardées
     const tasks = document.querySelectorAll("li");
-
     tasks.forEach(li => {
       // Cliquer pour terminer
       li.addEventListener("click", () => {
@@ -114,8 +85,23 @@ function loadTasks() {
         });
       }
     });
+    updateCounter();
   }
 }
 
-updateCounter();
+// Filtres
+function filterTasks(filter) {
+  const tasks = document.querySelectorAll("li");
+  tasks.forEach(task => {
+    if (filter === "all") {
+      task.style.display = "flex";
+    } else if (filter === "done") {
+      task.style.display = task.classList.contains("done") ? "flex" : "none";
+    } else if (filter === "todo") {
+      task.style.display = !task.classList.contains("done") ? "flex" : "none";
+    }
+  });
+}
 
+loadTasks();
+updateCounter();
