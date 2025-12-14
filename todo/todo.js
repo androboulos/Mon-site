@@ -1,43 +1,44 @@
 const taskInput = document.getElementById("taskInput");
 const addTaskBtn = document.getElementById("addTaskBtn");
 const taskList = document.getElementById("taskList");
+const counter = document.getElementById("counter");
+const filterButtons = document.querySelectorAll(".filters button");
 
-// Ajouter une tâche avec le bouton
+// Ajouter tâche
 addTaskBtn.addEventListener("click", addTask);
 
-// Ajouter une tâche avec ENTER
-taskInput.addEventListener("keypress", function (event) {
-  if (event.key === "Enter") {
-    addTask();
-  }
+// Ajouter avec ENTER
+taskInput.addEventListener("keypress", (e) => {
+  if (e.key === "Enter") addTask();
+});
+
+// Filtres
+filterButtons.forEach(btn => {
+  btn.addEventListener("click", () => {
+    filterTasks(btn.dataset.filter);
+  });
 });
 
 function addTask() {
-  const taskText = taskInput.value.trim();
-
-  if (taskText === "") {
-    alert("Veuillez entrer une tâche !");
-    return;
-  }
+  const text = taskInput.value.trim();
+  if (text === "") return alert("Entrez une tâche");
 
   const li = document.createElement("li");
-  li.textContent = taskText;
+  li.textContent = text;
 
-  // Marquer comme terminée
   li.addEventListener("click", () => {
     li.classList.toggle("done");
     saveTasks();
+    updateCounter();
   });
 
-  // Bouton supprimer
   const deleteBtn = document.createElement("button");
   deleteBtn.textContent = "❌";
-  deleteBtn.style.backgroundColor = "#e03131";
-
   deleteBtn.addEventListener("click", (e) => {
-    e.stopPropagation(); // empêche de cocher la tâche
+    e.stopPropagation();
     li.remove();
     saveTasks();
+    updateCounter();
   });
 
   li.appendChild(deleteBtn);
@@ -45,19 +46,46 @@ function addTask() {
 
   taskInput.value = "";
   saveTasks();
+  updateCounter();
 }
 
-// Sauvegarde dans le navigateur
+// Compteur
+function updateCounter() {
+  const total = taskList.children.length;
+  const done = document.querySelectorAll("li.done").length;
+  const remaining = total - done;
+
+  counter.textContent = `Tâches : ${remaining} à faire / ${total} au total`;
+}
+
+// Sauvegarde
 function saveTasks() {
   localStorage.setItem("tasks", taskList.innerHTML);
 }
 
-// Chargement au démarrage
+// Chargement
 function loadTasks() {
-  const savedTasks = localStorage.getItem("tasks");
-  if (savedTasks) {
-    taskList.innerHTML = savedTasks;
+  const saved = localStorage.getItem("tasks");
+  if (saved) {
+    taskList.innerHTML = saved;
+    updateCounter();
   }
 }
 
+// Filtres
+function filterTasks(filter) {
+  const tasks = document.querySelectorAll("li");
+
+  tasks.forEach(task => {
+    if (filter === "all") {
+      task.style.display = "flex";
+    } else if (filter === "done") {
+      task.style.display = task.classList.contains("done") ? "flex" : "none";
+    } else if (filter === "todo") {
+      task.style.display = !task.classList.contains("done") ? "flex" : "none";
+    }
+  });
+}
+
 loadTasks();
+updateCounter();
