@@ -87,5 +87,35 @@ function filterTasks(filter) {
   });
 }
 
-loadTasks();
+function loadTasks() {
+  const saved = localStorage.getItem("tasks");
+  if (saved) {
+    taskList.innerHTML = saved;
+
+    // Réactiver les événements sur les tâches sauvegardées
+    const tasks = document.querySelectorAll("li");
+
+    tasks.forEach(li => {
+      // Cliquer pour terminer
+      li.addEventListener("click", () => {
+        li.classList.toggle("done");
+        saveTasks();
+        updateCounter();
+      });
+
+      // Bouton supprimer
+      const deleteBtn = li.querySelector("button");
+      if (deleteBtn) {
+        deleteBtn.addEventListener("click", (e) => {
+          e.stopPropagation();
+          li.remove();
+          saveTasks();
+          updateCounter();
+        });
+      }
+    });
+  }
+}
+
 updateCounter();
+
