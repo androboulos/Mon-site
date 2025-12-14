@@ -12,20 +12,19 @@ body {
   background: white;
   padding: 25px;
   border-radius: 14px;
-  width: 360px;
+  width: 380px;
   box-shadow: 0 8px 20px rgba(0,0,0,0.15);
   text-align: center;
 }
 
 h1 {
   color: #2C6E91;
-  margin-bottom: 20px;
 }
 
 .input-group {
   display: flex;
   gap: 10px;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 }
 
 input {
@@ -33,12 +32,6 @@ input {
   padding: 10px;
   border-radius: 6px;
   border: 1px solid #ccc;
-  font-size: 15px;
-}
-
-input:focus {
-  outline: none;
-  border-color: #2C6E91;
 }
 
 button {
@@ -48,13 +41,30 @@ button {
   border: none;
   border-radius: 6px;
   cursor: pointer;
-  font-size: 15px;
   transition: transform 0.2s, box-shadow 0.2s;
 }
 
 button:hover {
   transform: scale(1.05);
   box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+#counter {
+  font-weight: bold;
+  margin: 10px 0;
+  color: #2C6E91;
+}
+
+.filters {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 15px;
+}
+
+.filters button {
+  flex: 1;
+  margin: 0 3px;
+  font-size: 14px;
 }
 
 ul {
@@ -72,11 +82,6 @@ li {
   justify-content: space-between;
   align-items: center;
   cursor: pointer;
-  transition: background 0.3s;
-}
-
-li:hover {
-  background: #e9ecef;
 }
 
 li.done {
