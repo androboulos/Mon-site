@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Tracker de budget</title>
+  <link rel="stylesheet" href="budget.css">
+</head>
+<body>
+
+  <div class="container">
+    <h1>💸 Budget mensuel</h1>
+
+    <div class="budget-box">
+      <input type="text" id="label" placeholder="Dépense (ex: Loyer)">
+      <input type="number" id="amount" placeholder="Montant €">
+      <button onclick="addExpense()">Ajouter</button>
+
+      <ul id="list"></ul>
+
+      <h3>Total : <span id="total">0</span> €</h3>
+    </div>
+  </div>
+
+  <script src="budget.js"></script>
+</body>
+</html>
