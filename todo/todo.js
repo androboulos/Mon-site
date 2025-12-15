@@ -2,93 +2,101 @@ const taskInput = document.getElementById("taskInput");
 const addTaskBtn = document.getElementById("addTaskBtn");
 const taskList = document.getElementById("taskList");
 const counter = document.getElementById("counter");
-const filterButtons = document.querySelectorAll(".filters button");
 
-// Liste des tâches
-let tasks = [];
-
-// Ajouter tâche
 addTaskBtn.addEventListener("click", addTask);
-taskInput.addEventListener("keypress", (e) => { if (e.key === "Enter") addTask(); });
+window.onload = loadTasks;
 
-// Filtres
-filterButtons.forEach(btn => {
-  btn.addEventListener("click", () => filterTasks(btn.dataset.filter));
-});
-
-// Ajouter une tâche
 function addTask() {
   const text = taskInput.value.trim();
-  if (!text) return alert("Entrez une tâche");
+  if (text === "") return;
 
-  const task = { text: text, done: false };
-  tasks.push(task);
-  saveTasks();
-  renderTasks();
+  const li = createTask(text, false);
+  taskList.appendChild(li);
+
   taskInput.value = "";
+  saveTasks();
+  updateCounter();
 }
 
-// Affichage des tâches
-function renderTasks(filter = "all") {
-  taskList.innerHTML = "";
-  tasks.forEach((task, index) => {
-    if (
-      filter === "all" ||
-      (filter === "done" && task.done) ||
-      (filter === "todo" && !task.done)
-    ) {
-      const li = document.createElement("li");
-      li.textContent = task.text;
-      if (task.done) li.classList.add("done");
+function createTask(text, done) {
+  const li = document.createElement("li");
+  if (done) li.classList.add("done");
 
-      // Toggle done
-      li.addEventListener("click", () => {
-        task.done = !task.done;
-        saveTasks();
-        renderTasks(filter);
-      });
+  const span = document.createElement("span");
+  span.textContent = text;
 
-      // Supprimer
-      const deleteBtn = document.createElement("button");
-      deleteBtn.textContent = "❌";
-      deleteBtn.addEventListener("click", (e) => {
-        e.stopPropagation();
-        tasks.splice(index, 1);
-        saveTasks();
-        renderTasks(filter);
-      });
+  const actions = document.createElement("div");
+  actions.className = "actions";
 
-      li.appendChild(deleteBtn);
-      taskList.appendChild(li);
-    }
+  const doneBtn = document.createElement("button");
+  doneBtn.textContent = "✓";
+  doneBtn.className = "done-btn";
+  doneBtn.onclick = () => {
+    li.classList.toggle("done");
+    saveTasks();
+    updateCounter();
+  };
+
+  const deleteBtn = document.createElement("button");
+  deleteBtn.textContent = "✕";
+  deleteBtn.className = "delete-btn";
+  deleteBtn.onclick = () => {
+    li.remove();
+    saveTasks();
+    updateCounter();
+  };
+
+  actions.appendChild(doneBtn);
+  actions.appendChild(deleteBtn);
+
+  li.appendChild(span);
+  li.appendChild(actions);
+
+  return li;
+}
+
+function saveTasks() {
+  const tasks = [];
+  document.querySelectorAll("li").forEach(li => {
+    tasks.push({
+      text: li.querySelector("span").textContent,
+      done: li.classList.contains("done")
+    });
+  });
+  localStorage.setItem("tasks", JSON.stringify(tasks));
+}
+
+function loadTasks() {
+  const saved = JSON.parse(localStorage.getItem("tasks"));
+  if (!saved) return;
+
+  saved.forEach(task => {
+    const li = createTask(task.text, task.done);
+    taskList.appendChild(li);
   });
 
   updateCounter();
 }
 
-// Compteur
 function updateCounter() {
-  const total = tasks.length;
-  const doneCount = tasks.filter(t => t.done).length;
-  const remaining = total - doneCount;
-  counter.textContent = `Tâches : ${remaining} à faire / ${total} au total`;
+  const total = document.querySelectorAll("li").length;
+  const done = document.querySelectorAll("li.done").length;
+  counter.textContent = `${done} / ${total} tâches terminées`;
 }
 
-// Sauvegarde
-function saveTasks() {
-  localStorage.setItem("tasks", JSON.stringify(tasks));
+/* Filtres */
+function showAll() {
+  document.querySelectorAll("li").forEach(li => li.style.display = "flex");
 }
 
-// Chargement
-function loadTasks() {
-  const saved = localStorage.getItem("tasks");
-  if (saved) tasks = JSON.parse(saved);
-  renderTasks();
+function showTodo() {
+  document.querySelectorAll("li").forEach(li => {
+    li.style.display = li.classList.contains("done") ? "none" : "flex";
+  });
 }
 
-// Filtrer
-function filterTasks(filter) {
-  renderTasks(filter);
+function showDone() {
+  document.querySelectorAll("li").forEach(li => {
+    li.style.display = li.classList.contains("done") ? "flex" : "none";
+  });
 }
-
-loadTasks();
