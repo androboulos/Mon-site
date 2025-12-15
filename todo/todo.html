@@ -7,23 +7,27 @@
 </head>
 <body>
 
-  <h1>📝 Ma To-Do List</h1>
+  <div class="container">
+    <h1>📝 Ma To-Do List</h1>
 
-  <div class="todo-box">
-    <input type="text" id="taskInput" placeholder="Nouvelle tâche...">
-    <button id="addTaskBtn">Ajouter</button>
+    <div class="todo-box">
+      <input type="text" id="taskInput" placeholder="Nouvelle tâche...">
+      <button id="addTaskBtn">Ajouter</button>
 
-    <div class="filters">
-      <button onclick="showAll()">Toutes</button>
-      <button onclick="showTodo()">À faire</button>
-      <button onclick="showDone()">Terminées</button>
+      <div class="filters">
+        <button onclick="showAll()">Toutes</button>
+        <button onclick="showTodo()">À faire</button>
+        <button onclick="showDone()">Terminées</button>
+      </div>
+
+      <ul id="taskList"></ul>
+
+      <p id="counter"></p>
     </div>
-
-    <ul id="taskList"></ul>
-
-    <p id="counter"></p>
   </div>
 
   <script src="todo.js"></script>
 </body>
+
 </html>
+
