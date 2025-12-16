@@ -1,35 +1,79 @@
-const API_KEY = "47c5932af69e288d5d42913f70fc7c56";
+const apiKey = "47c5932af69e288d5d42913f70fc7c56"; // 🔑 47c5932af69e288d5d42913f70fc7c56
 
-async function getWeather() {
-  const city = document.getElementById("city").value.trim();
-  const result = document.getElementById("result");
+const inputVille = document.getElementById("ville");
+const btn = document.getElementById("btn");
+const resultat = document.getElementById("resultat");
+const loader = document.getElementById("loader");
 
-  if (!city) {
-    result.textContent = "⛔ Merci d’entrer une ville";
-    return;
+// clic bouton
+btn.addEventListener("click", chercherMeteo);
+
+// touche Entrée
+inputVille.addEventListener("keydown", function (e) {
+  if (e.key === "Enter") {
+    chercherMeteo();
   }
+});
 
-  result.textContent = "⏳ Chargement...";
+// charger dernière ville
+const villeSauvegardee = localStorage.getItem("ville");
+if (villeSauvegardee) {
+  inputVille.value = villeSauvegardee;
+  chercherMeteo();
+}
 
-  try {
-    const response = await fetch(
-      `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&lang=fr&appid=${API_KEY}`
-    );
+function chercherMeteo() {
+  const ville = inputVille.value.trim();
+  if (ville === "") return;
 
-    if (!response.ok) {
-      throw new Error("Ville introuvable");
-    }
+  loader.style.display = "block";
+  resultat.innerHTML = "";
 
-    const data = await response.json();
+  localStorage.setItem("ville", ville);
 
-    result.innerHTML = `
-      <p><strong>${data.name}</strong></p>
-      <p>🌡️ Température : ${data.main.temp} °C</p>
-      <p>☁️ ${data.weather[0].description}</p>
-      <p>💨 Vent : ${data.wind.speed} km/h</p>
-    `;
+  fetch(`https://api.openweathermap.org/data/2.5/weather?q=${ville}&units=metric&lang=fr&appid=${apiKey}`)
+    .then(response => response.json())
+    .then(data => {
+      loader.style.display = "none";
 
-  } catch (error) {
-    result.textContent = "❌ Erreur : ville introuvable";
-  }
+      if (data.cod !== 200) {
+        resultat.innerHTML = "❌ Ville introuvable";
+        return;
+      }
+
+      const temp = Math.round(data.main.temp);
+      const desc = data.weather[0].description;
+      const weather = data.weather[0].main;
+
+      let icon = "🌍";
+      let className = "";
+
+      if (weather === "Clear") {
+        icon = "☀️";
+        className = "sunny";
+      } else if (weather === "Clouds") {
+        icon = "☁️";
+        className = "cloudy";
+      } else if (weather === "Rain") {
+        icon = "🌧️";
+        className = "rainy";
+      } else if (weather === "Snow") {
+        icon = "❄️";
+        className = "snowy";
+      }
+
+      resultat.innerHTML = `
+        <div class="icon ${className}">${icon}</div>
+        <div class="${className}">
+          ${data.name} : ${temp}°C<br>
+          ${desc}
+        </div>
+      `;
+    })
+    .catch(() => {
+      loader.style.display = "none";
+      resultat.innerHTML = "⚠️ Erreur de connexion";
+    });
+
+  inputVille.value = "";
 }
