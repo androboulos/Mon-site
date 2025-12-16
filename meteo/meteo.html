@@ -2,20 +2,20 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <title>Application météo</title>
+  <title>Application Météo</title>
   <link rel="stylesheet" href="meteo.css">
 </head>
+
 <body>
 
-  <div class="container">
-    <h1>🌦️ Météo</h1>
+  <h1>🌦️ Application Météo</h1>
 
-    <div class="meteo-box">
-      <input type="text" id="city" placeholder="Entrez une ville">
-      <button onclick="getWeather()">Rechercher</button>
+  <div class="box">
+    <input type="text" id="ville" placeholder="Entrez une ville">
+    <button id="btn">Rechercher</button>
 
-      <div id="result"></div>
-    </div>
+    <div id="loader">⏳ Chargement...</div>
+    <div id="resultat"></div>
   </div>
 
   <script src="meteo.js"></script>
