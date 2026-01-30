@@ -2,8 +2,8 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <title>Mon portfolio</title>
-  
+  <title>Portfolio – Andro</title>
+
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 
@@ -13,9 +13,9 @@
       max-width: 900px;
       margin: auto;
       padding: 20px;
-      line-height: 1.6;
       background-color: #f4f7f9;
       color: #333;
+      line-height: 1.6;
     }
 
     h1, h2 {
@@ -45,29 +45,18 @@
       background: white;
       padding: 20px;
       border-radius: 12px;
-      margin-bottom: 20px;
+      margin-bottom: 25px;
       box-shadow: 0 4px 10px rgba(0,0,0,0.15);
-      transition: transform 0.3s, box-shadow 0.3s;
-    }
-
-    .project:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 8px 20px rgba(0,0,0,0.2);
-    }
-
-    .project h2, .project h3 {
-      margin-top: 0;
     }
 
     .project a {
-      display: block;
+      display: inline-block;
       margin-top: 10px;
-      text-decoration: none;
+      margin-right: 15px;
       font-weight: bold;
       color: #2C6E91;
       border-bottom: 2px solid #2C6E91;
-      width: fit-content;
-      transition: color 0.3s, border-color 0.3s;
+      text-decoration: none;
     }
 
     .project a:hover {
@@ -75,176 +64,94 @@
       border-color: #1a4a63;
     }
 
-    button {
-      padding: 15px;
-      font-size: 18px;
+    .tag {
+      font-size: 13px;
+      background: #e0f0f7;
+      color: #2C6E91;
+      padding: 4px 8px;
       border-radius: 6px;
-      border: none;
-      background-color: #2C6E91;
-      color: white;
-      cursor: pointer;
-      transition: background 0.3s;
+      display: inline-block;
+      margin-bottom: 8px;
     }
-
-    button:hover {
-      background-color: #1a4a63;
-    }
-
   </style>
 </head>
 
 <body>
 
-  <!-- Barre de navigation -->
-  <nav>
-    <a href="index.html">Accueil</a>
-    <a href="portfolio.html">Portfolio</a>
-    <a href="#contact">Contact</a>
-  </nav>
+<!-- Navigation -->
+<nav>
+  <a href="index.html">Accueil</a>
+  <a href="portfolio.html">Portfolio</a>
+</nav>
 
-  <h1>Mes projets</h1>
+<h1>Portfolio – Développeur Web</h1>
+<p>
+  Projets réalisés en HTML, CSS, JavaScript, React et Node.js dans le cadre
+  d’une reconversion professionnelle vers le développement web.
+</p>
 
-  <!-- Projet 1 -->
-  <div class="project">
-    <h2>Projet 1 : Page À propos de moi</h2>
-    <p>
-      Mon tout premier projet web : une page simple avec HTML, CSS, une photo, et une mise en ligne via GitHub Pages.
-    </p>
-    <a href="index.html">Voir le projet</a>
-  </div>
-
-  <!-- Projet 2 : Script interactif JS -->
-  <div class="project">
-    <h2>Projet 2 : Script interactif JavaScript</h2>
-    <p>
-      Un script interactif qui pose des questions à l’utilisateur et affiche les réponses directement sur la page.
-    </p>
-    <a href="https://androboulos.github.io/Mon-site/interaction.html" target="_blank">Voir le projet</a>
-  </div>
-
-  <!-- Projet 3 -->
-  <div class="project">
-    <h2>Projet 3 : À venir</h2>
-    <p>
-      Après : votre premier projet React !
-    </p>
-    <a href="#">Voir le projet</a>
-  </div>
-
-  <!-- Projet 4 : Calculatrice -->
-  <div class="project">
-    <h2>Projet 4 : Calculatrice Interactive</h2>
-    <p>
-      Une calculatrice simple et interactive en JavaScript.
-    </p>
-    <a href="calculatrice.html">Voir le projet</a>
-  </div>
-
-  <div class="project">
-  <h2>Projet 5 : Vérificateur d'âge</h2>
-  <p>
-    Un petit outil interactif en JavaScript qui indique si l’utilisateur est majeur ou mineur.
-  </p>
-  <a href="age.html">Voir le projet</a>
-</div>
-
-  <div class="project">
-  <h2>Projet 6 : Quiz interactif</h2>
-  <p>
-    Un quiz dynamique en JavaScript avec score automatique.
-  </p>
-  <a href="quiz.html">Voir le projet</a>
-</div>
-
-  <div class="project">
-  <h2>Projet 7 : Convertisseur Euro ↔ Dollar ↔ EGP</h2>
-  <p>
-    Convertisseur interactif Euro ↔ Dollar ↔ Livre égyptienne
-  </p>
-  <a href="convertisseur.html">Voir le projet</a>
-</div>
-
-  <div class="project">
-  <h2>Projet 8 : Mini-Jeu “Devine le nombre”</h2>
-  <p>
-    Un jeu interactif en JavaScript où l’utilisateur doit deviner le nombre secret. 
-  </p>
-  <a href="devine.html">Voir le projet</a>
-</div>
-
-  <!-- Projet 9 : Générateur de citations aléatoires -->
+<!-- PROJET PHARE -->
 <div class="project">
-  <h2>Projet 9 : Générateur de citations aléatoires</h2>
+  <span class="tag">⭐ Projet phare – Full-Stack</span>
+  <h2>Budget Tracker React</h2>
   <p>
-    Générateur interactif affichant une citation différente à chaque clic.
+    Application React déployée sur Netlify, connectée à une API Node.js / Express
+    déployée sur Render. Gestion des dépenses avec total dynamique.
   </p>
-  <a href="citations.html">Voir le projet</a>
+  <a href="https://astonishing-gnome-2401f7.netlify.app/" target="_blank">
+    Voir l’application (Frontend React)
+  </a>
+  <a href="https://budget-app-backend-1-vash.onrender.com/api/budget/test@test.com" target="_blank">
+    Voir l’API (Backend Render)
+  </a>
 </div>
 
-<!-- Projet 10 : Horloge digitale en temps réel -->
+<!-- AUTRES PROJETS MAJEURS -->
 <div class="project">
-  <h2>Projet 10 : Horloge digitale en temps réel</h2>
+  <span class="tag">API & JavaScript</span>
+  <h2>Application météo</h2>
   <p>
-    Horloge digitale mise à jour toutes les secondes pour afficher l’heure exacte.
-  </p>
-  <a href="horloge.html">Voir le projet</a>
-</div>
-
-  <div class="project">
-  <h2>Projet 11 : To-Do List interactive</h2>
-  <p>
-    Application JavaScript permettant d’ajouter, supprimer et valider des tâches.
-  </p>
-  <a href="todo/todo.html">Voir le projet</a>
-</div>
-
-  <div class="project">
-  <h2>Projet 12 : Tracker de budget</h2>
-  <p>
-    Application JavaScript permettant de gérer un budget mensuel
-    avec calcul automatique et sauvegarde locale.
-  </p>
-  <a href="budget/budget.html">Voir le projet</a>
-</div>
-
-  <div class="project">
-  <h2>Projet 13 : Application météo</h2>
-  <p>
-    Application JavaScript utilisant une API externe (OpenWeather)
-    pour afficher la météo en temps réel d’une ville.
+    Application JavaScript utilisant une API externe pour afficher la météo
+    en temps réel selon la ville recherchée.
   </p>
   <a href="meteo/meteo.html">Voir le projet</a>
 </div>
 
-  <div class="project">
-  <h2>Projet 14 : Application Budget — Full-Stack</h2>
+<div class="project">
+  <span class="tag">JavaScript</span>
+  <h2>To-Do List interactive</h2>
   <p>
-    Application web complète avec ajout et suppression de dépenses.
-    Backend en Node.js + Express déployé sur Render.
+    Gestion de tâches avec ajout, suppression et validation.
   </p>
-
-  <a href="https://budget-app-backend-1-vash.onrender.com/auth/" target="_blank">
-    Voir l'application en ligne
-  </a>
+  <a href="todo/todo.html">Voir le projet</a>
 </div>
 
-  <div class="project">
-  <h2>Projet 15 : Budget Tracker React (Full-Stack)</h2>
+<!-- PROJETS JAVASCRIPT INTERACTIFS -->
+<div class="project">
+  <span class="tag">JavaScript – Projets interactifs</span>
+  <h2>Mini-applications & jeux JavaScript</h2>
   <p>
-    Application React déployée sur Netlify, connectée à une API Node.js (Express) déployée sur Render.
-    Ajout et suppression de dépenses + total dynamique.
+    Série de projets réalisés pour maîtriser la logique JavaScript,
+    les conditions, les boucles, les événements et les calculs dynamiques.
   </p>
 
-  <a href="https://astonishing-gnome-2401f7.netlify.app/" target="_blank">
-    Voir l'application en ligne
-  </a>
+  <a href="devine.html">🎮 Devine le nombre</a>
+  <a href="quiz.html">❓ Quiz interactif</a>
+  <a href="calculatrice.html">🧮 Calculatrice</a>
+  <a href="convertisseur.html">💱 Convertisseur Euro ↔ Dollar ↔ EGP</a>
 </div>
 
-  <!-- Bouton WordPress -->
-  <a href="https://andromichel95-xykhl.wordpress.com/" target="_blank" 
-     style="display:inline-block; padding:10px 20px; background-color:#2C6E91; color:white; text-decoration:none; border-radius:5px; font-weight:bold; margin-top:20px;">
-    Mon site WordPress
+<!-- WORDPRESS -->
+<div class="project">
+  <span class="tag">CMS</span>
+  <h2>Site WordPress</h2>
+  <p>
+    Site réalisé avec WordPress.com pour découvrir un CMS et la gestion de contenu.
+  </p>
+  <a href="https://andromichel95-xykhl.wordpress.com/" target="_blank">
+    Voir le site WordPress
   </a>
+</div>
 
 </body>
 </html>
